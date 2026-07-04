@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دلاریس کیک | داشبورد</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ===== هدر شیشه‌ای با منوی همبرگری ===== -->
+    <header class="dashboard-header glass">
+        <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="header-title">دلاریس کیک</div>
+        <div class="header-cart" onclick="goToCart()">
+            🛒
+            <span class="cart-badge" id="cartCount">0</span>
+        </div>
+    </header>
+
+    <!-- ===== سایدبار لوکس ===== -->
+    <div class="sidebar glass" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
+            <div class="sidebar-brand">دلاریس کیک</div>
+        </div>
+        <ul>
+            <li onclick="goToDashboard()">🏠 صفحه اصلی</li>
+            <li onclick="goToCart()">🛒 سبد خرید</li>
+            <li onclick="goToPayment()">💳 پرداخت</li>
+            <li onclick="scrollToSection('testimonials')">⭐ نظرات</li>
+            <li onclick="scrollToSection('branch')">📍 شعبه‌ها</li>
+            <li onclick="logout()" class="logout-btn">🚪 خروج</li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>ساخته شده با ❤️ توسط</p>
+            <p class="studio-name">Amir Studio</p>
+        </div>
+    </div>
+
+    <!-- ===== محتوای اصلی ===== -->
+    <main class="dashboard-main">
+
+        <!-- ===== گالری کیک‌ها ===== -->
+        <section class="gallery animate-on-scroll">
+            <h2 class="section-title">کیک‌های ویژه <span class="gold-dot">●</span></h2>
+            <div class="cake-grid" id="cakeGrid"></div>
+        </section>
+
+        <!-- ===== نظرات مشتریان ===== -->
+        <section class="testimonials animate-on-scroll" id="testimonials">
+            <h2 class="section-title">رضایت مشتریان <span class="gold-dot">●</span></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card glass-card">
+                    <p>"بهترین کیک عمرم! طعم و طراحی فوق‌العاده"</p>
+                    <span class="testimonial-author">— سارا م.</span>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <p>"ارسال فوق‌العاده سریع و بسته‌بندی لوکس"</p>
+                    <span class="testimonial-author">— رضا ک.</span>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <p>"همیشه از دلاریس کیک سفارش می‌دم، بی‌نظیره"</p>
+                    <span class="testimonial-author">— نرگس ش.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== اطلاعات شعبه ===== -->
+        <section class="branch-info glass-card animate-on-scroll" id="branch">
+            <h2>شعبه‌های ما</h2>
+            <div class="branch-details">
+                <p><span class="branch-icon">📍</span> قشم، دولاب، خیابان اصلی، پلاک ۱۲</p>
+                <p><span class="branch-icon">📞</span> ۰۹۱۷۹۱۳۱۰۳۷</p>
+                <p><span class="branch-icon">📧</span> dolaris.cake@gmail.com</p>
+            </div>
+            <div class="branch-hours">
+                <p>🕐 شنبه تا چهارشنبه: ۱۰ صبح تا ۱۰ شب</p>
+                <p>🕐 پنجشنبه و جمعه: ۱۲ ظهر تا ۱۲ شب</p>
+            </div>
+        </section>
+
+        <!-- ===== فوتر ===== -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-studio">
+                    ساخته شده توسط 
+                    <span class="studio-name">Amir Studio</span>
+                </p>
+                <div class="footer-social">
+                    <a href="#">اینستاگرام</a>
+                    <a href="#">روبیکا</a>
+                    <a href="#">واتساپ</a>
+                    <a href="#">تلگرام</a>
+                </div>
+                <p class="footer-contact">
+                    برای اطمینان از سفارش خود، از طریق روبیکا یا اینستاگرام با ما در ارتباط باشید.
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ===== مودال نمایش جزئیات کیک ===== -->
+    <div class="modal" id="cakeModal">
+        <div class="modal-content glass-card">
+            <span class="modal-close" onclick="closeModal()">✕</span>
+            <img id="modalImage" src="" alt="کیک" />
+            <h3 id="modalName"></h3>
+            <p id="modalDesc"></p>
+            <p id="modalPrice" class="price"></p>
+            <button class="btn-enter" onclick="addToCartFromModal()">افزودن به سبد خرید</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
