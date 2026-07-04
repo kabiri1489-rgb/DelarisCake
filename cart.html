@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سبد خرید | دلاریس کیک</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="cart-page glass">
+        <div class="cart-header">
+            <h1>🛒 سبد خرید</h1>
+            <span class="cart-close" onclick="goToDashboard()">✕</span>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-summary glass-card">
+            <div class="cart-total">
+                <span>جمع کل:</span>
+                <span id="cartTotal" class="total-price">۰ تومان</span>
+            </div>
+            <div class="cart-actions">
+                <button class="btn-enter" onclick="goToPayment()">پرداخت</button>
+                <button class="btn-secondary" onclick="clearCart()">پاک کردن سبد</button>
+            </div>
+        </div>
+        <button class="btn-back" onclick="goToDashboard()">← بازگشت به فروشگاه</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
