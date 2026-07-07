@@ -1,0 +1,1043 @@
+/* ============================================= */
+/* ===== فونت‌های لوکس ===== */
+/* ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Vazirmatn:wght@300;400;600;700&display=swap');
+
+/* ============================================= */
+/* ===== متغیرهای رنگ ===== */
+/* ============================================= */
+
+:root {
+    --gold: #D4AF37;
+    --gold-light: #E8C97A;
+    --gold-gradient: linear-gradient(135deg, #D4AF37, #E8C97A, #D4AF37);
+    --gold-shadow: 0 6px 32px rgba(212, 175, 55, 0.3);
+    --title-color: #F7E7B4;
+    --text-color: #D9D9D9;
+    --bg-dark: #0b0b0d;
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --radius-xl: 56px;
+    --radius-lg: 36px;
+    --radius-sm: 20px;
+    --transition: 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================= */
+/* ===== ریست کلی ===== */
+/* ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Vazirmatn', 'Playfair Display', serif;
+    background: var(--bg-dark);
+    color: var(--text-color);
+    direction: rtl;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================= */
+/* ===== اسپلش اسکرین (بزرگ‌تر) ===== */
+/* ============================================= */
+
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: opacity 1.4s ease, visibility 1.4s ease;
+}
+.splash.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.splash-content {
+    animation: splashFade 2.2s ease forwards;
+}
+@keyframes splashFade {
+    0% { opacity: 0; transform: scale(0.94); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.splash-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--title-color);
+    letter-spacing: 18px;
+}
+.splash-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    letter-spacing: 10px;
+    margin-top: 12px;
+}
+
+/* ============================================= */
+/* ===== HERO (مرکزچین، بزرگ‌تر و درشت‌تر) ===== */
+/* ============================================= */
+
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 30px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, rgba(91, 43, 59, 0.15), transparent 35%),
+                radial-gradient(circle at bottom left, rgba(106, 76, 147, 0.12), transparent 40%),
+                linear-gradient(135deg, #0b0b0d, #141418, #101012);
+    gap: 24px;
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.02), transparent 60%);
+    pointer-events: none;
+}
+.hero-content {
+    max-width: 800px;
+    width: 100%;
+    z-index: 2;
+    animation: fadeUp 1.2s ease-out forwards;
+}
+.hero-image {
+    position: relative;
+    width: 70%;
+    max-width: 460px;
+    z-index: 2;
+    animation: fadeUp 1.4s ease-out 0.3s forwards;
+    opacity: 0;
+    margin: 0 auto;
+}
+.hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 24px 72px rgba(212, 175, 55, 0.10));
+}
+.hero-glow {
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.18), transparent 70%);
+    filter: blur(120px);
+    z-index: 1;
+    animation: glowPulse 4.5s ease-in-out infinite alternate;
+}
+@keyframes glowPulse {
+    0% { opacity: 0.5; transform: scale(0.94); }
+    100% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== تایپوگرافی هیرو (درشت‌تر) ===== */
+.hero-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 6px;
+}
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.5rem;
+    font-weight: 900;
+    color: var(--title-color);
+    letter-spacing: 6px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+.hero-title .gold-text {
+    color: var(--gold);
+}
+.hero-desc {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-bottom: 6px;
+}
+.hero-sub-desc {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 560px;
+    line-height: 2;
+    margin: 0 auto 36px;
+    opacity: 0.9;
+}
+
+/* ===== دکمه‌های هیرو (بزرگ‌تر) ===== */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn-primary, .btn-secondary {
+    padding: 18px 52px;
+    border-radius: 80px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border: none;
+}
+.btn-primary {
+    background: var(--gold-gradient);
+    color: #0b0b0d;
+    box-shadow: var(--gold-shadow);
+    background-size: 200% 200%;
+    animation: shimmerGold 5s ease-in-out infinite;
+}
+@keyframes shimmerGold {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.btn-primary:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+}
+.btn-secondary {
+    background: transparent;
+    color: var(--text-color);
+    border: 1.5px solid rgba(255, 255, 255, 0.10);
+}
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-6px) scale(1.04);
+}
+
+/* ===== گوشه‌های تزئینی ===== */
+.corner-tl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.05), transparent 70%);
+    border-radius: 0 0 100% 0;
+    pointer-events: none;
+}
+.corner-br {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.03), transparent 70%);
+    border-radius: 100% 0 0 0;
+    pointer-events: none;
+}
+
+/* ============================================= */
+/* ===== واکنش‌گرایی هیرو (بزرگ‌تر در موبایل) ===== */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 36px 24px;
+        gap: 18px;
+        min-height: 100vh;
+    }
+    .hero-title {
+        font-size: 4rem;
+        letter-spacing: 3px;
+    }
+    .hero-desc {
+        font-size: 1.6rem;
+    }
+    .hero-sub-desc {
+        font-size: 1.05rem;
+        max-width: 100%;
+        margin-bottom: 28px;
+    }
+    .hero-image {
+        width: 65%;
+        max-width: 320px;
+    }
+    .hero-image img {
+        max-height: 280px;
+    }
+    .hero-glow {
+        filter: blur(80px);
+        inset: -24px;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 14px 34px;
+        font-size: 1.05rem;
+    }
+    .splash-en {
+        font-size: 4.5rem;
+        letter-spacing: 10px;
+    }
+    .splash-sub {
+        font-size: 1.4rem;
+        letter-spacing: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 24px 16px;
+        gap: 14px;
+    }
+    .hero-title {
+        font-size: 3.2rem;
+        letter-spacing: 2px;
+    }
+    .hero-desc {
+        font-size: 1.3rem;
+    }
+    .hero-sub-desc {
+        font-size: 0.95rem;
+        margin-bottom: 22px;
+    }
+    .hero-image {
+        width: 75%;
+        max-width: 260px;
+    }
+    .hero-image img {
+        max-height: 220px;
+    }
+    .hero-glow {
+        filter: blur(60px);
+        inset: -16px;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+    .splash-en {
+        font-size: 3.2rem;
+        letter-spacing: 6px;
+    }
+    .splash-sub {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+    }
+}
+
+/* ============================================= */
+/* ===== هدر (برای صفحات داخلی) ===== */
+/* ============================================= */
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    background: rgba(11, 11, 13, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+}
+.logo-img:hover {
+    border-color: var(--gold);
+    transform: scale(1.06);
+}
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--title-color);
+    letter-spacing: 3px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.dashboard-main {
+    padding-top: 96px;
+}
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    padding: 5px;
+}
+.menu-icon span {
+    display: block;
+    width: 28px;
+    height: 2.5px;
+    background: var(--gold);
+    border-radius: 4px;
+    transition: all var(--transition);
+}
+.menu-icon:hover span {
+    background: var(--gold-light);
+}
+
+/* ============================================= */
+/* ===== سایدبار ===== */
+/* ============================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -340px;
+    width: 320px;
+    height: 100%;
+    padding: 30px 25px;
+    transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1000;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-left: 1px solid var(--glass-border);
+}
+.sidebar.active {
+    right: 0;
+}
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 20px;
+}
+.sidebar-close {
+    font-size: 2rem;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all var(--transition);
+    line-height: 1;
+}
+.sidebar-close:hover {
+    transform: rotate(90deg);
+}
+.sidebar-brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--title-color);
+    letter-spacing: 3px;
+}
+.sidebar ul {
+    list-style: none;
+}
+.sidebar ul li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all var(--transition);
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+}
+.sidebar ul li:hover {
+    color: var(--gold);
+    padding-right: 15px;
+}
+.sidebar ul li.logout-btn {
+    color: #b55;
+    margin-top: 10px;
+}
+.sidebar ul li.logout-btn:hover {
+    color: #d77;
+}
+.sidebar-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    text-align: center;
+    color: var(--text-color);
+    font-size: 0.85rem;
+}
+.sidebar-footer .studio-name {
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+/* ============================================= */
+/* ===== گالری (دو ستونه) ===== */
+/* ============================================= */
+
+.gallery {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--title-color);
+    letter-spacing: 2px;
+}
+.section-sub {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-top: 6px;
+}
+.gold-dot {
+    color: var(--gold);
+}
+.cake-grid.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.cake-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 20px 16px 24px;
+    text-align: center;
+    transition: all var(--transition);
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.cake-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: transform var(--transition);
+}
+.cake-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-top: 16px;
+}
+.cake-card .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 6px 0 8px;
+}
+.cake-card .cake-desc {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    line-height: 1.6;
+}
+.cake-grid:has(.cake-card.active) .cake-card:not(.active) {
+    opacity: 0.4;
+    transform: scale(0.92);
+    filter: blur(2px);
+    transition: all var(--transition);
+}
+.cake-card.active {
+    transform: scale(1.08) translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.04);
+}
+.cake-card.active img {
+    transform: scale(1.04);
+}
+.ideas-section {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+/* ============================================= */
+/* ===== نظرات (اسلایدر) ===== */
+/* ============================================= */
+
+.reviews-section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.reviews-slider {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.reviews-slider::-webkit-scrollbar {
+    display: none;
+}
+.review-card {
+    min-width: 280px;
+    max-width: 320px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    text-align: center;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    transition: all var(--transition);
+}
+.review-card:hover {
+    border-color: rgba(212, 175, 55, 0.15);
+    transform: translateY(-6px);
+}
+.review-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    margin-bottom: 12px;
+}
+.review-name {
+    font-size: 1.1rem;
+    color: var(--title-color);
+    font-weight: 600;
+}
+.review-text {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    line-height: 1.7;
+    margin: 10px 0 6px;
+}
+.review-stars {
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* ============================================= */
+/* ===== اطلاعات تماس ===== */
+/* ============================================= */
+
+.info-section {
+    max-width: 600px;
+    margin: 60px auto 30px;
+    padding: 0 20px;
+}
+.info-card {
+    padding: 30px 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+}
+.info-card h3 {
+    font-size: 1.6rem;
+    color: var(--title-color);
+    margin-bottom: 12px;
+}
+.info-card p {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    padding: 6px 0;
+}
+.info-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 16px auto;
+    opacity: 0.4;
+}
+.hours {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    padding: 4px 0;
+}
+
+/* ============================================= */
+/* ===== فوتر ===== */
+/* ============================================= */
+
+.footer {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    margin-top: 40px;
+}
+.footer-studio {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.footer-studio .studio-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+.footer-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-top: 6px;
+    opacity: 0.6;
+}
+
+/* ============================================= */
+/* ===== مودال اطلاعات لوگو ===== */
+/* ============================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.modal.active {
+    display: flex;
+}
+.modal-content {
+    max-width: 420px;
+    width: 100%;
+    padding: 28px 22px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    position: relative;
+    animation: fadeUp 0.4s ease forwards;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+.modal-close {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all var(--transition);
+}
+.modal-close:hover {
+    color: var(--title-color);
+    transform: rotate(90deg);
+}
+.info-modal-body {
+    text-align: center;
+    padding: 10px 0;
+}
+.info-modal-body .info-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold);
+    margin-bottom: 16px;
+}
+.info-modal-body h3 {
+    font-size: 1.6rem;
+    color: var(--title-color);
+    margin-bottom: 16px;
+}
+.info-modal-body p {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* ============================================= */
+/* ===== ثبت‌نام ===== */
+/* ============================================= */
+
+.register-page {
+    width: 100%;
+    max-width: 540px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background: radial-gradient(circle at top right, rgba(91, 43, 59, 0.08), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(106, 76, 147, 0.06), transparent 40%),
+                var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-card {
+    padding: 48px 36px;
+    border-radius: var(--radius-xl) !important;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+.register-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.register-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--title-color);
+    letter-spacing: 3px;
+}
+.register-header p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-top: 6px;
+    opacity: 0.7;
+}
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+.input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 60px;
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: all var(--transition);
+    font-family: 'Vazirmatn', sans-serif;
+}
+.input-group input:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.03);
+}
+.input-group label {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    transition: all var(--transition);
+    pointer-events: none;
+    font-size: 0.95rem;
+}
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    right: 20px;
+    font-size: 0.7rem;
+    color: var(--gold);
+    background: var(--bg-dark);
+    padding: 0 8px;
+    border-radius: 30px;
+}
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+.gold-btn {
+    background: var(--gold-gradient) !important;
+    color: #0b0b0d !important;
+    border: none !important;
+    box-shadow: var(--gold-shadow) !important;
+    background-size: 200% 200% !important;
+    animation: shimmerGold 4s ease-in-out infinite !important;
+}
+.gold-btn:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35) !important;
+}
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-color) !important;
+}
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: var(--gold) !important;
+    color: var(--gold) !important;
+}
+.register-footer {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+.register-footer a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition);
+    cursor: pointer;
+}
+.register-footer a:hover {
+    border-bottom-color: var(--gold);
+}
+.btn-enter {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    color: var(--text-color);
+    padding: 16px 48px;
+    border-radius: 80px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+.btn-enter:hover {
+    background: rgba(212, 175, 55, 0.06);
+    border-color: var(--gold);
+    transform: scale(1.02);
+}
+.btn-enter .btn-shimmer {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: skewX(-20deg);
+    transition: 0.6s;
+}
+.btn-enter:hover .btn-shimmer {
+    left: 150%;
+}
+.btn-enter .btn-text {
+    position: relative;
+    z-index: 2;
+}
+.btn-full {
+    width: 100%;
+    padding: 16px 30px;
+    letter-spacing: 2px;
+}
+
+/* ============================================= */
+/* ===== واکنش‌گرایی کلی ===== */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    .main-header {
+        padding: 10px 16px;
+    }
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+    .brand-name {
+        font-size: 1.2rem;
+    }
+    .dashboard-main {
+        padding-top: 80px;
+    }
+    .cake-grid.two-col {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+    }
+    .cake-card img {
+        height: 200px;
+    }
+    .reviews-slider {
+        gap: 16px;
+    }
+    .review-card {
+        min-width: 240px;
+    }
+    .register-card {
+        padding: 36px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cake-card img {
+        height: 180px;
+    }
+    .info-card {
+        padding: 20px 16px;
+    }
+    .register-card {
+        padding: 30px 20px;
+    }
+    .review-card {
+        min-width: 200px;
+        padding: 18px 14px;
+    }
+}
